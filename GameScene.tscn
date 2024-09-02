@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://unv3dy221cek"]
+
+[ext_resource type="PackedScene" uid="uid://xivep3672wju" path="res://Tajine.tscn" id="1_f8a67"]
+[ext_resource type="Texture2D" uid="uid://iq877rcyqonn" path="res://GroundTile-removebg-preview.png" id="2_g4wtg"]
+[ext_resource type="PackedScene" uid="uid://bkgn4vkalyuvv" path="res://Timerbar.tscn" id="3_erggu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ctqxq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4qdf"]
+size = Vector2(1087, 53)
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Tajine" parent="." instance=ExtResource("1_f8a67")]
+texture_filter = 1
+position = Vector2(156, 310)
+scale = Vector2(0.6, 0.6)
+gravity = 1000.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-6, -6)
+physics_material_override = SubResource("PhysicsMaterial_ctqxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(309, 511)
+shape = SubResource("RectangleShape2D_m4qdf")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+z_index = -1
+position = Vector2(225.439, 422)
+scale = Vector2(2.68224, 1.03775)
+texture = ExtResource("2_g4wtg")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(450, 0, 450, 600, 460.973, 599.624, 1122, 577, 944, -198, -336, -99, -357, 713, 0, 780, 0, 0)
+
+[node name="Control" parent="." instance=ExtResource("3_erggu")]
+offset_left = 144.0
+offset_top = 491.0
+offset_right = 351.0
+offset_bottom = 514.0
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 207.0
+offset_top = 540.0
+offset_right = 247.0
+offset_bottom = 580.0
+
+[node name="GOLabel" type="Label" parent="Control2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -5.0
+offset_top = -2.0
+offset_right = 82.0
+offset_bottom = 21.0
+text = "Game Over
+"

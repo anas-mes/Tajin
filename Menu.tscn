@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2adkscscyjbk"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_1j21l"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6py5f"]
+
+[node name="Control" type="Control"]
+material = SubResource("CanvasItemMaterial_6py5f")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 449.0
+offset_bottom = 599.0
+script = ExtResource("1_1j21l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 91.0
+offset_right = 155.0
+offset_bottom = 192.0
+scale = Vector2(3.31948, 2.57602)
+
+[node name="Startbtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start game"
+
+[node name="settingsbtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="Creditsbtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits
+"
+
+[connection signal="pressed" from="VBoxContainer/Startbtn" to="." method="_on_startbtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/settingsbtn" to="." method="_on_settingsbtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Creditsbtn" to="." method="_on_creditsbtn_pressed"]
