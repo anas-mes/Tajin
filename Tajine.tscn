@@ -1,39 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://xivep3672wju"]
 
 [ext_resource type="Script" path="res://Tajine2D.gd" id="1_n80s3"]
-[ext_resource type="Texture2D" uid="uid://3gghlg6yw2i5" path="res://ART/Tajine_pixel.png" id="2_ipm2b"]
+[ext_resource type="Texture2D" uid="uid://cy1e0vtfskl03" path="res://oldguy.png" id="2_5ewg4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7q77b"]
 radius = 7.13983
-
-[sub_resource type="Animation" id="Animation_t74ng"]
-resource_name = "Idle"
-length = 0.30001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tajinesprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 0, 0, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tajinesprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, -6.99998), Vector2(1, -6.5), Vector2(1, -6), Vector2(1, -6.5)]
-}
 
 [sub_resource type="Animation" id="Animation_yue14"]
 length = 0.001
@@ -49,35 +20,12 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tajinesprite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0872665]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tajinesprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, -6.99998)]
-}
 
-[sub_resource type="Animation" id="Animation_kpx3t"]
-resource_name = "Idle"
-length = 0.30001
+[sub_resource type="Animation" id="Animation_oaviq"]
+resource_name = "idle"
+length = 0.60002
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,49 +33,56 @@ tracks/0/path = NodePath("Tajinesprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tajinesprite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0872665, -0.0872665]
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_m2cay"]
+resource_name = "walk"
+length = 1.00001
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tajinesprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5, 6, 7, 8, 9, 10, 11, 12, 12]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m0wqy"]
 _data = {
-"Idle": SubResource("Animation_t74ng"),
 "RESET": SubResource("Animation_yue14"),
-"Walk": SubResource("Animation_kpx3t")
+"idle": SubResource("Animation_oaviq"),
+"walk": SubResource("Animation_m2cay")
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-position = Vector2(-3, -5)
+position = Vector2(600, -80)
 script = ExtResource("1_n80s3")
 
 [node name="Tajinesprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1, -6.99998)
-rotation = 0.0872665
-scale = Vector2(0.393095, 0.430723)
-texture = ExtResource("2_ipm2b")
-flip_h = true
+texture_filter = 1
+position = Vector2(-1, -44)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("2_5ewg4")
+hframes = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 22)
-scale = Vector2(12.2195, 7.78286)
+position = Vector2(3, -14)
+scale = Vector2(4.84323, -8.02461)
 shape = SubResource("CircleShape2D_7q77b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_m0wqy")
 }
+autoplay = "idle"

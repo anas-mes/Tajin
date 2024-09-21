@@ -39,6 +39,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_u4mby")
 text = "Main Meu"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 182.0
 offset_right = 383.0
@@ -46,6 +47,7 @@ offset_bottom = 271.0
 text = "Test"
 
 [node name="Button3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 71.0
 offset_top = 300.0
 offset_right = 382.0

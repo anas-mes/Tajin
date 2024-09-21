@@ -18,12 +18,14 @@ func _physics_process(delta):
 	velocity.x = 0  # Reset horizontal velocity
 	if Input.is_action_pressed("R"):
 		velocity.x += speed
-		anim_player.play("Walk")  # Play walk animation
+		%Tajinesprite.flip_h = false
+		anim_player.play("walk")  # Play walk animation
 	elif Input.is_action_pressed("L"):
+		%Tajinesprite.flip_h = true
 		velocity.x -= speed
-		anim_player.play("Walk")  # Play walk animation
+		anim_player.play("walk")  # Play walk animation
 	else:
-		anim_player.play("Idle")  # Play idle animation when not moving
+		anim_player.play("idle")  # Play idle animation when not moving
 
 	# Check if the character is on the floor to reset the jump count
 	if is_on_floor():

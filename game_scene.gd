@@ -13,8 +13,8 @@ func _process(delta):
 	
 			var game_over_instance = GameOverScene.instantiate()
 	
-
+			game_over_instance.z_index = 10
 			add_child(game_over_instance)
 	
 	# Optionally, you can move the game over scene to the front
-			game_over_instance.z_index = -50
+			

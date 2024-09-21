@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://baunboufs3ad"]
+
+[ext_resource type="Script" path="res://marker_2d.gd" id="1_qsjv1"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+light_mask = 3
+visibility_layer = 3
+polygon = PackedVector2Array(449, 2, 451, 602, -4, 599, -1, -32, -71, -39, -76, 659, 519, 658, 510, -68, 443, -69)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(207, 19)
+script = ExtResource("1_qsjv1")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Marker2D" method="_on_timer_timeout"]

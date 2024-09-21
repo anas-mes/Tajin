@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://budmrf1i6ejun"]
+
+[ext_resource type="Script" path="res://projectile.gd" id="1_72c6u"]
+[ext_resource type="Texture2D" uid="uid://gosa8jqmvr0k" path="res://projectile.png" id="1_c6308"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_su6e5"]
+radius = 18.0278
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(173, 73)
+script = ExtResource("1_72c6u")
+bounce_factor = null
+lifetime = null
+rotation_speed = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c6308")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_su6e5")

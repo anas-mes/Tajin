@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://unv3dy221cek"]
+[gd_scene load_steps=13 format=3 uid="uid://unv3dy221cek"]
 
 [ext_resource type="Script" path="res://game_scene.gd" id="1_2hrm7"]
 [ext_resource type="PackedScene" uid="uid://xivep3672wju" path="res://Tajine.tscn" id="1_f8a67"]
 [ext_resource type="Texture2D" uid="uid://iq877rcyqonn" path="res://GroundTile-removebg-preview.png" id="2_g4wtg"]
 [ext_resource type="PackedScene" uid="uid://bkgn4vkalyuvv" path="res://Timerbar.tscn" id="3_erggu"]
 [ext_resource type="Texture2D" uid="uid://pghk02hfh7mx" path="res://buttonsprites.png" id="4_bwhku"]
+[ext_resource type="PackedScene" uid="uid://s8tyoku6f1t3" path="res://Launcher.tscn" id="6_cjuhx"]
+[ext_resource type="Texture2D" uid="uid://b3tny5vpfclch" path="res://gamestruc.png" id="7_cm4g4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ctqxq"]
 
@@ -27,7 +29,7 @@ script = ExtResource("1_2hrm7")
 
 [node name="Tajine" parent="." instance=ExtResource("1_f8a67")]
 texture_filter = 1
-position = Vector2(156, 310)
+position = Vector2(179, 434)
 scale = Vector2(0.6, 0.6)
 gravity = 1000.0
 
@@ -36,19 +38,14 @@ position = Vector2(-6, -6)
 physics_material_override = SubResource("PhysicsMaterial_ctqxq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(309, 511)
+position = Vector2(307, 495)
 shape = SubResource("RectangleShape2D_m4qdf")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 z_index = -1
-position = Vector2(225.439, 422)
+position = Vector2(225, 406)
 scale = Vector2(2.68224, 1.03775)
 texture = ExtResource("2_g4wtg")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-polygon = PackedVector2Array(450, 0, 450, 600, 460.973, 599.624, 1122, 577, 944, -198, -336, -99, -357, 713, 0, 780, 0, 0)
 
 [node name="Control" parent="." instance=ExtResource("3_erggu")]
 offset_left = 144.0
@@ -56,22 +53,34 @@ offset_top = 491.0
 offset_right = 351.0
 offset_bottom = 514.0
 
+[node name="ProgressBar" parent="Control" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.159
+anchor_top = 2.739
+anchor_right = -0.159
+anchor_bottom = 2.739
+offset_left = -0.0870018
+offset_top = 0.00300598
+offset_right = 199.913
+offset_bottom = 20.003
+
 [node name="Control2" type="Control" parent="."]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
-offset_left = 207.0
-offset_top = 540.0
-offset_right = 247.0
-offset_bottom = 580.0
+offset_left = 224.0
+offset_top = 96.0
+offset_right = 264.0
+offset_bottom = 136.0
 
 [node name="GOLabel" type="Label" parent="Control2"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = -5.0
-offset_top = -2.0
-offset_right = 82.0
-offset_bottom = 21.0
+offset_left = -44.0
+offset_top = -58.0
+offset_right = 43.0
+offset_bottom = -35.0
 text = "Game Over
 "
 
@@ -84,14 +93,29 @@ text = "Paused"
 horizontal_alignment = 1
 
 [node name="Pausebutton" type="Button" parent="."]
-offset_left = 381.0
-offset_top = 9.0
-offset_right = 443.0
-offset_bottom = 40.0
+offset_left = 369.0
+offset_top = 548.0
+offset_right = 431.0
+offset_bottom = 579.0
 theme_override_styles/focus = SubResource("StyleBoxTexture_3iip1")
 theme_override_styles/hover = SubResource("StyleBoxTexture_e24ar")
 theme_override_styles/normal = SubResource("StyleBoxTexture_wedd4")
 text = "Pause"
+
+[node name="Node2D" parent="." instance=ExtResource("6_cjuhx")]
+position = Vector2(229, 40)
+
+[node name="Gamestruc" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(226, 299)
+texture = ExtResource("7_cm4g4")
+
+[node name="Border" type="StaticBody2D" parent="."]
+position = Vector2(1, -1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
+position = Vector2(-1, 1)
+polygon = PackedVector2Array(49, 34, 48, 461, 408, 461, 408, 34, 451, 34, 452, 514, 8, 514, 6, 25)
 
 [connection signal="pressed" from="Pausebutton" to="Control" method="_on_pausebutton_pressed"]
 

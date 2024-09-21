@@ -37,6 +37,11 @@ U={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="wall"
+2d_render/layer_2="projectile"
+
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
