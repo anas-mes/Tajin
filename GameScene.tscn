@@ -1,15 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://unv3dy221cek"]
+[gd_scene load_steps=11 format=3 uid="uid://unv3dy221cek"]
 
+[ext_resource type="Script" path="res://game_scene.gd" id="1_2hrm7"]
 [ext_resource type="PackedScene" uid="uid://xivep3672wju" path="res://Tajine.tscn" id="1_f8a67"]
 [ext_resource type="Texture2D" uid="uid://iq877rcyqonn" path="res://GroundTile-removebg-preview.png" id="2_g4wtg"]
 [ext_resource type="PackedScene" uid="uid://bkgn4vkalyuvv" path="res://Timerbar.tscn" id="3_erggu"]
+[ext_resource type="Texture2D" uid="uid://pghk02hfh7mx" path="res://buttonsprites.png" id="4_bwhku"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ctqxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4qdf"]
 size = Vector2(1087, 53)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3iip1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e24ar"]
+texture = ExtResource("4_bwhku")
+region_rect = Rect2(75, 20, 41, 19)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wedd4"]
+texture = ExtResource("4_bwhku")
+expand_margin_bottom = 8.0
+region_rect = Rect2(11, 19, 41, 20)
+
 [node name="GameScene" type="Node2D"]
+script = ExtResource("1_2hrm7")
 
 [node name="Tajine" parent="." instance=ExtResource("1_f8a67")]
 texture_filter = 1
@@ -60,3 +74,25 @@ offset_right = 82.0
 offset_bottom = 21.0
 text = "Game Over
 "
+
+[node name="PauseLabel" type="Label" parent="."]
+offset_left = 114.0
+offset_top = 120.0
+offset_right = 358.0
+offset_bottom = 204.0
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Pausebutton" type="Button" parent="."]
+offset_left = 381.0
+offset_top = 9.0
+offset_right = 443.0
+offset_bottom = 40.0
+theme_override_styles/focus = SubResource("StyleBoxTexture_3iip1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_e24ar")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wedd4")
+text = "Pause"
+
+[connection signal="pressed" from="Pausebutton" to="Control" method="_on_pausebutton_pressed"]
+
+[editable path="Control"]

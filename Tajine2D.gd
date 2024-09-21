@@ -28,7 +28,7 @@ func _physics_process(delta):
 	# Check if the character is on the floor to reset the jump count
 	if is_on_floor():
 		jump_count = 0
-
+  
 	# Handle jumping
 	if Input.is_action_just_pressed("U") and jump_count < max_jumps:
 		velocity.y = jump_speed

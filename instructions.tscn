@@ -1,32 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2adkscscyjbk"]
+[gd_scene load_steps=10 format=3 uid="uid://cwfrob6joa6kn"]
 
-[ext_resource type="Shader" path="res://scroll.gdshader" id="1_ejyra"]
-[ext_resource type="Script" path="res://menu.gd" id="1_r513k"]
-[ext_resource type="Texture2D" uid="uid://pghk02hfh7mx" path="res://buttonsprites.png" id="2_isyic"]
-[ext_resource type="Texture2D" uid="uid://cgl3vw82yim87" path="res://tile-asprite.png" id="2_kybcu"]
+[ext_resource type="Script" path="res://instructions.gd" id="1_riar6"]
+[ext_resource type="Shader" path="res://scroll.gdshader" id="2_hllm1"]
+[ext_resource type="Texture2D" uid="uid://cgl3vw82yim87" path="res://tile-asprite.png" id="3_yivgb"]
+[ext_resource type="Texture2D" uid="uid://pghk02hfh7mx" path="res://buttonsprites.png" id="4_hp2cq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8o3l4"]
-shader = ExtResource("1_ejyra")
+shader = ExtResource("2_hllm1")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjdrq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce23u"]
-texture = ExtResource("2_isyic")
+texture = ExtResource("4_hp2cq")
 texture_margin_bottom = 8.0
 region_rect = Rect2(75, 20, 41, 19)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yc1lp"]
-texture = ExtResource("2_isyic")
+texture = ExtResource("4_hp2cq")
 texture_margin_bottom = 8.0
 region_rect = Rect2(139, 21, 41, 18)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdowl"]
-texture = ExtResource("2_isyic")
+texture = ExtResource("4_hp2cq")
 texture_margin_bottom = 8.0
 region_rect = Rect2(11, 19, 41, 20)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_r513k")
+script = ExtResource("1_riar6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 40.0
@@ -45,43 +45,40 @@ offset_top = -0.999992
 offset_right = 73.0
 offset_bottom = 63.0
 scale = Vector2(6.89772, 9.38384)
-texture = ExtResource("2_kybcu")
+texture = ExtResource("3_yivgb")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="."]
 z_index = 1
 texture_filter = 1
-offset_left = 77.0
-offset_top = 90.0
-offset_right = 123.0
-offset_bottom = 125.0
-scale = Vector2(6.11668, 4.32764)
+offset_left = 49.0
+offset_top = 46.0
+offset_right = 153.0
+offset_bottom = 81.0
+scale = Vector2(3.4218, 3.21703)
 theme_override_constants/outline_size = 2
 theme_override_constants/align_to_largest_stylebox = 5
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bjdrq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ce23u")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_yc1lp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qdowl")
-text = "Start"
-metadata/_edit_use_anchors_ = true
+text = "set controlls"
 
 [node name="Button2" type="Button" parent="."]
 z_index = 1
 texture_filter = 1
-offset_left = 75.0
-offset_top = 266.0
-offset_right = 121.0
-offset_bottom = 301.0
-scale = Vector2(2.87529, 3.22789)
+offset_left = 45.0
+offset_top = 431.0
+offset_right = 146.0
+offset_bottom = 466.0
+scale = Vector2(3.65499, 3.95205)
 theme_override_constants/outline_size = 2
 theme_override_constants/align_to_largest_stylebox = 5
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bjdrq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ce23u")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_yc1lp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qdowl")
-text = "instructions"
-metadata/_edit_use_anchors_ = true
+text = "Main menu
+"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

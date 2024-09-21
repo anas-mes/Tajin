@@ -1,12 +1,11 @@
-extends Control
+extends Node2D
 
 
-func _on_startbtn_pressed():
+
+
+func _on_button_2_pressed():
+	get_tree().change_scene_to_file("res://instructions.tscn")
+
+
+func _on_button_pressed():
 	get_tree().change_scene_to_file("res://GameScene.tscn")
-
-func _on_settingsbtn_pressed():
-	get_tree().change_scene_to_file("res://path_to_your_settings_scene.tscn")
-
-
-func _on_creditsbtn_pressed():
-	get_tree().change_scene_to_file("res://path_to_your_credits_scene.tscn")
