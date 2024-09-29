@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 @onready var anim_player = $AnimationPlayer  # Reference to the AnimationPlayer node
 
+
+
 # Internal velocity to handle movement
 var velocityy = Vector2.ZERO
 
@@ -42,6 +44,10 @@ func _physics_process(delta):
 
 	# Move the character and handle collisions
 	move_and_slide()
+
+func player():
+	print("player")
+	
 
 	# Constrain within boundaries (optional, can be added if needed)
 	# position.x = clamp(position.x, left_boundary, right_boundary)

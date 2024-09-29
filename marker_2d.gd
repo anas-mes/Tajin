@@ -1,9 +1,8 @@
 extends Marker2D
-
 @onready var projectil = load("res://projectile_plus.tscn")
 @export var min_angle: float = -60.0
 @export var max_angle: float = 60.0
-@export var projectile_speed: float = 300.0
+@export var projectile_speed: float = 130.0
 @onready var timer = $"../Timer"
 
 func _ready():
@@ -23,12 +22,14 @@ func launch_projectile():
 	# Set the velocity of the projectile
 	projectile.velocity = direction.normalized() * projectile_speed
 
-# This function is called externally to trigger the launch manually
+	# Ensure the projectile is set up with the correct collision layers
+	projectile.collision_layer = 0b10  # Layer 2
+	projectile.collision_mask = 0b1    # Layer 1
+
 func trigger_launch():
 	print("Launching projectile")
 	launch_projectile()
 
-# Timer timeout callback
 func _on_timer_timeout():
 	timer.start()  # Restart the timer
 	trigger_launch()

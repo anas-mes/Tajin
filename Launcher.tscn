@@ -1,14 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://s8tyoku6f1t3"]
+[gd_scene load_steps=2 format=3 uid="uid://dteql2iqp0424"]
 
 [ext_resource type="Script" path="res://marker_2d.gd" id="1_omgwv"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(3, 1)
 script = ExtResource("1_omgwv")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.499
 autostart = true
 
 [connection signal="timeout" from="Timer" to="Marker2D" method="_on_timer_timeout"]

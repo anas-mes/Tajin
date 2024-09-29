@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://unv3dy221cek"]
+[gd_scene load_steps=14 format=3 uid="uid://unv3dy221cek"]
 
 [ext_resource type="Script" path="res://game_scene.gd" id="1_2hrm7"]
 [ext_resource type="PackedScene" uid="uid://xivep3672wju" path="res://Tajine.tscn" id="1_f8a67"]
 [ext_resource type="Texture2D" uid="uid://iq877rcyqonn" path="res://GroundTile-removebg-preview.png" id="2_g4wtg"]
 [ext_resource type="PackedScene" uid="uid://bkgn4vkalyuvv" path="res://Timerbar.tscn" id="3_erggu"]
 [ext_resource type="Texture2D" uid="uid://pghk02hfh7mx" path="res://buttonsprites.png" id="4_bwhku"]
-[ext_resource type="PackedScene" uid="uid://s8tyoku6f1t3" path="res://Launcher.tscn" id="6_cjuhx"]
+[ext_resource type="PackedScene" uid="uid://dteql2iqp0424" path="res://Launcher.tscn" id="6_cjuhx"]
 [ext_resource type="Texture2D" uid="uid://b3tny5vpfclch" path="res://gamestruc.png" id="7_cm4g4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ctqxq"]
@@ -24,6 +24,9 @@ texture = ExtResource("4_bwhku")
 expand_margin_bottom = 8.0
 region_rect = Rect2(11, 19, 41, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eesfe"]
+size = Vector2(394, 20)
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_2hrm7")
 
@@ -31,7 +34,6 @@ script = ExtResource("1_2hrm7")
 texture_filter = 1
 position = Vector2(179, 434)
 scale = Vector2(0.6, 0.6)
-gravity = 1000.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-6, -6)
@@ -76,6 +78,7 @@ offset_bottom = 136.0
 
 [node name="GOLabel" type="Label" parent="Control2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = -44.0
 offset_top = -58.0
@@ -117,6 +120,14 @@ position = Vector2(1, -1)
 position = Vector2(-1, 1)
 polygon = PackedVector2Array(49, 34, 48, 461, 408, 461, 408, 34, 451, 34, 452, 514, 8, 514, 6, 25)
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(221, 10)
+shape = SubResource("RectangleShape2D_eesfe")
+
 [connection signal="pressed" from="Pausebutton" to="Control" method="_on_pausebutton_pressed"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 
 [editable path="Control"]

@@ -65,8 +65,10 @@ _data = {
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-position = Vector2(600, -80)
+position = Vector2(-2, -48)
 script = ExtResource("1_n80s3")
+gravity = 1000.0
+metadata/players = true
 
 [node name="Tajinesprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true

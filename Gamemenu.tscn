@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://chdj7ixbmdsu7"]
+[gd_scene load_steps=10 format=3 uid="uid://chdj7ixbmdsu7"]
 
 [ext_resource type="Script" path="res://gamemenu.gd" id="1_77o4u"]
 [ext_resource type="Texture2D" uid="uid://pghk02hfh7mx" path="res://buttonsprites.png" id="1_noiof"]
@@ -13,6 +13,20 @@ region_rect = Rect2(75, 20, 41, 19)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u4mby"]
 texture = ExtResource("1_noiof")
 expand_margin_bottom = 8.0
+region_rect = Rect2(11, 19, 41, 20)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0in1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wj0j5"]
+texture = ExtResource("1_noiof")
+region_rect = Rect2(75, 20, 41, 19)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0rtv"]
+texture = ExtResource("1_noiof")
+region_rect = Rect2(139, 21, 41, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4154f"]
+texture = ExtResource("1_noiof")
 region_rect = Rect2(11, 19, 41, 20)
 
 [node name="Control" type="Control"]
@@ -44,7 +58,11 @@ offset_left = 72.0
 offset_top = 182.0
 offset_right = 383.0
 offset_bottom = 271.0
-text = "Test"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o0in1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wj0j5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a0rtv")
+theme_override_styles/normal = SubResource("StyleBoxTexture_4154f")
+text = "Restart"
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
@@ -56,3 +74,4 @@ text = "Test
 "
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

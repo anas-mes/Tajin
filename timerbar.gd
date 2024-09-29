@@ -15,7 +15,7 @@ func _ready():
 	timer.start()
 	progress_bar.max_value = timer.wait_time
 	progress_bar.value = timer.wait_time
-	game_over_label.visible = false
+	
 	pause_label.visible = false
 	pause_btn.connect("pressed", Callable(self, "_on_pause_button_pressed"))
 	pause_btn.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -24,14 +24,10 @@ func _process(delta):
 	if not is_paused:
 		var time_left = timer.time_left
 		progress_bar.value = time_left
-		if time_left <= 0:
-			game_over()
+		
+			
 
-func game_over():
-	var tajine_sprite = tajine_node.get_node("%Tajinesprite")
-	tajine_sprite.modulate = Color(0.2, 0.2, 0.2)
-	get_tree().paused = true
-	game_over_label.visible = true
+
 	
 
 func toggle_pause():
